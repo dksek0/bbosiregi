@@ -5,7 +5,7 @@
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body style="background-color: rgb(18, 77, 47);">
 
 
   <div class="keys">
@@ -61,11 +61,11 @@
   var key = document.getElementsByClassName(".key");
   addEventListener('keydown', function(e) {
     var code = (e.keyCode);
-    document.querySelector('div[data-key='+code+']').classList.toggle('playing')
-    // document.querySelector('div.dataset.key').classList.toggle('playing')
-    // for (i=0; i<key.length; i++) {
-    // }
-
+    document.querySelector(`div[data-key="${code}"]`).classList.add('playing');
+    document.querySelector(`audio[data-key="${code}"]`).play();
+    setTimeout(() => {
+      document.querySelector(`div[data-key="${code}"]`).classList.remove('playing');
+    }, 100);
   })
 
 </script>
