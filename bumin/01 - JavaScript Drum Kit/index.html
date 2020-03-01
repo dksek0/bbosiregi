@@ -60,8 +60,9 @@
 <script>
   var audioArr = document.querySelectorAll('audio');
   var audioLen = audioArr.length;
+  var audioEl = document.querySelectorAll('.key');
   var audioKey = [];
-  
+
   for(var i=0; i<audioLen; i++){
     audioKey.push(audioArr[i].getAttribute('data-key'));
   }
@@ -72,7 +73,13 @@
         audioArr[i].pause;
         audioArr[i].currentTime=0;
         audioArr[i].play();
+        audioEl[i].classList.add('playing');
       }
+    }
+  }
+  document.onkeyup = function(){
+    for(var i=0; i<audioLen; i++){
+      audioEl[i].classList.remove('playing');
     }
   }
 </script>
