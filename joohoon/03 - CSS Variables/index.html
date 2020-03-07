@@ -49,23 +49,25 @@
     const target = document.querySelector(".img");
     const targetTitle = document.querySelector(".hl");
 
-    inputs.forEach(function (value, index) {
-
-      target.style.padding = value.value + "px";
-      target.style.filter = "blur(" + value.value + "px)";
-      target.style.backgroundColor = value.value;
-      targetTitle.style.color = value.value;
-
-      value.addEventListener("mousemove", (e) => {
-        if (e.target.id == "spacing") {
+    inputs.forEach(function (input) {
+      if (input.id == "spacing") {
+        target.style.padding = input.value + "px";
+        input.addEventListener("mousemove", (e) => {
           target.style.padding = e.target.value + "px";
-        } else if (e.target.id == "blur") {
+        });
+      } else if (input.id == "blur") {
+        target.style.filter = "blur(" + input.value + "px)";
+        input.addEventListener("mousemove", (e) => {
           target.style.filter = "blur(" + e.target.value + "px)";
-        } else if (e.target.id == "base") {
+        });
+      } else if (input.id == "base") {
+        target.style.backgroundColor = input.value;
+        targetTitle.style.color = input.value;
+        input.addEventListener("change", (e) => {
           target.style.backgroundColor = e.target.value;
           targetTitle.style.color = e.target.value;
-        }
-      });
+        });
+      }
     });
   </script>
 
